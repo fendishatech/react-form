@@ -64,7 +64,11 @@ const Home = () => {
 
   // Events
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    const { name, value, validity } = e.target;
+
+    setValues({ ...values, [name]: value });
+    const val = { ...values, [name]: validity.valid };
+    console.log({ val });
   };
 
   const handleSubmit = (e) => {

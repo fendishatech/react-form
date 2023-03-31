@@ -2,6 +2,9 @@ import React from "react";
 
 const FormInput = (props) => {
   const { label, errorMessage, onChange, id, ...inputProps } = props;
+
+  const isInvalid =
+    inputProps.required && inputProps.pattern && !inputProps.value;
   return (
     <div className="flex flex-col">
       <label>{label}</label>
@@ -10,18 +13,11 @@ const FormInput = (props) => {
         {...inputProps}
         onChange={onChange}
       />
-      {errorMessage && (
-        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      {isInvalid && errorMessage && (
+        <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
           {errorMessage}
         </span>
       )}
-      {/* <span
-        className={`text-red-500 text-sm pt-2 ${
-          errorMessage ? "hidden" : "block"
-        }`}
-      >
-        {errorMessage}
-      </span> */}
     </div>
   );
 };
