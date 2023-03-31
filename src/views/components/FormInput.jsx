@@ -2,7 +2,7 @@ import React from "react";
 
 const FormInput = (props) => {
   const { label, errorMessage, onChange, id, ...inputProps } = props;
-
+  // const showError = !isValid && props.isSubmitted;
   const isInvalid =
     inputProps.required && inputProps.pattern && !inputProps.value;
   return (

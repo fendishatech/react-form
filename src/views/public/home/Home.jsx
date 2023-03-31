@@ -10,6 +10,7 @@ const Home = () => {
     password: "",
     confirmPassword: "",
   });
+  const [submitted, setSubmitted] = useState(false);
 
   // INPUTS
   const formInputs = [
@@ -29,8 +30,10 @@ const Home = () => {
       name: "email",
       type: "email",
       placeholder: "Email",
-      errorMessage: "It should be a valid email address!",
+      errorMessage: "It should be a valid email address Format!",
       label: "Email",
+      pattern: `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`,
+      required: true,
     },
     {
       id: 3,
@@ -68,7 +71,6 @@ const Home = () => {
 
     setValues({ ...values, [name]: value });
     const val = { ...values, [name]: validity.valid };
-    console.log({ val });
   };
 
   const handleSubmit = (e) => {
