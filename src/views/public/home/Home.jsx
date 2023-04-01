@@ -10,9 +10,8 @@ const Home = () => {
     password: "",
     confirmPassword: "",
   });
-  const [submitted, setSubmitted] = useState(false);
 
-  // INPUTS
+  // Inputs definition
   const formInputs = [
     {
       id: 1,
@@ -70,18 +69,47 @@ const Home = () => {
     const { name, value, validity } = e.target;
 
     setValues({ ...values, [name]: value });
-    const val = { ...values, [name]: validity.valid };
+    // const val = { ...values, [name]: validity.valid };
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // validator function ?
-    console.log(`This is the object version`, values);
+  const isEmailValid = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateInput = (input, value) => {
+    // accepts input and its value
+    if (input.name == "username") {
+      console.log("Username it is! and value id ", value);
+    } else {
+      console.log("Look more deeper alice! More Like Here clueless ");
+    }
+
+    if (input.name == "email") {
+      console.log("Email it is!", value);
+    } else {
+      console.log("Look more deeper alice! More Like Here clueless ");
+    }
+
+    // if (input == "") {
+    //   return { name: input.name, error: `${input.label} is required` };
+    // }
+    // if (input.type === "email" && !isEmailValid(value)) {
+    //   return { name: input.name, error: "Please enter a valid email address" };
+    // }
+    // add more validation rules here
+    return null;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // submit the form if there are no errors
   };
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
-      <h1 className="text-red-600 text-4xl font-semibold">Hello React Form</h1>
+      <h1 className=" text-4xl font-semibold">Hello React Form</h1>
       {/* form */}
       <form
         onSubmit={handleSubmit}
